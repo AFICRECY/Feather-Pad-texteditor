@@ -19,7 +19,7 @@
 
 ## Description:
 
-Deployed Application Link: 
+Deployed Application Link:  https://feather-pad-texteditor.herokuapp.com/
 
 Note-taking apps have become an essential tool in today's society as they offer convenience, organization, and accessibility for individuals across various domains. Whether it's capturing important ideas, creating to-do lists, or recording meeting minutes, these apps provide a digital space for efficient note-taking, eliminating the need for traditional pen and paper. Moreover, their synchronization capabilities enable seamless access to notes across multiple devices, ensuring information is readily available whenever and wherever it is needed. My task was to build a text editor that can both run in a browser as well as have the ability to be installable as an app. This application should also be accessible on a user’s device without internet connection. I created the Feather pad text editor application considering the criteria of a progressive web app (PWA). The key focus of this project is to ensure a seamless user experience with access to a note taker application that can be installed on a user's device and usable even offline. To create Feather Pad, I brought together many different kinds of software, plugins, and packages. The Feather Pad app can become an indispensable tool for students, researchers, and professionals, offering them the ability to store, organize, and collaborate on notes and research projects. Note taking applications that do not rely on the internet  play a crucial role in enhancing productivity and facilitating efficient information management in various domains. This digital notebook serves as a modern counterpart to traditional paper notebooks, enabling users to conveniently organize their notes and information and auto save on the go. 
 
@@ -30,10 +30,15 @@ Screenshot of Functioning Web Application:
 
 
 ## Table of Contents:
-* Installation (HTML, CSS, JavaScript, Node.js, NPM Packages, Webpack, PWA Paradigm, Functions, IndexedDB, Express.js, Heroku, Manifest.json, Service Workers)
-* Usage
-* Credits
-* License
+* [Description](#description)
+* [Installation](#installation) 
+<br>
+(HTML, CSS, JavaScript, Node.js, NPM Packages, Webpack, PWA Paradigm, Functions, IndexedDB, Express.js, Heroku, Manifest.json, Service Workers)
+<br>
+
+* [Usage](#usage)
+* [Credits](#credits)
+* [License](#license)
 
 
 <p>&nbsp;</p>
@@ -41,7 +46,9 @@ Screenshot of Functioning Web Application:
 
 ### Installation:
 
-To install this project, a knowledge of HTML, CSS, JavaScript, Node.js, and Express.js, the Progressive Web Application Paradigm (PWAs), IndexedDB, Git, and Heroku  were required.  I had to first install Node.js to my computer and then install the Express and NPM packages. I installed the following dependencies with my npm install (express, manifest.json, webpack plugins, babel, workbox plugins, and nodemon).The Express package allowed me to use the express framework in Node.js. In order to create this application. The Feather Pad test editor application is designed as a single-page application, meeting the criteria of a Progressive Web App (PWA). Furthermore, it  incorporates various data persistence techniques, and functions within the browser as well as an installable app using the manifest dependency package. Additionally, the Feather Pad text editor has offline functionality, allowing users to continue using it even without an internet connection thanks to my usage of IndexedDB. This application extends beyond note-taking, offering versatile functionality for journaling, team tasks, work projects, programming, planning, and more. With its user-friendly interface and intuitive design, it seamlessly caters to both individual and team-based projects, ensuring a great user experience. The code below make this happen: 
+To install this project, a knowledge of HTML, CSS, JavaScript, Node.js, and Express.js, the Progressive Web Application Paradigm (PWAs), IndexedDB, Git, and Heroku  were required.  I had to first install Node.js to my computer and then install the Express and NPM packages. I installed the following dependencies with my npm install (express, manifest.json, webpack plugins, babel, workbox plugins, and nodemon).The Express package allowed me to use the express framework in Node.js. In order to create this application. The Feather Pad test editor application is designed as a single-page application, meeting the criteria of a Progressive Web App (PWA). Furthermore, it  incorporates various data persistence techniques, and functions within the browser as well as an installable app using the manifest dependency package. Additionally, the Feather Pad text editor has offline functionality, allowing users to continue using it even without an internet connection thanks to my usage of IndexedDB.  To simplify this process, I will employ the "idb" package, a lightweight wrapper around the IndexedDB, which is widely trusted by major companies like Google and Mozilla. By combining these technologies, I aim to create a powerful text editor that enables users to work on their documents seamlessly, regardless of their internet connectivity. This application extends beyond note-taking, offering versatile functionality for journaling, team tasks, work projects, programming, planning, and more. With its user-friendly interface and intuitive design, it seamlessly caters to both individual and team-based projects, ensuring a great user experience. 
+
+The user should be able to navigate to the heroku deployed site linked at the start of this readme and click the install button. The Feather Pad text editor will install onto the users device and is ready for use. The code below make this happen: 
 
 <p>&nbsp;</p>
 
@@ -299,5 +306,51 @@ window.addEventListener('appinstalled', (event) => {
 <p>&nbsp;</p>
 
 
+### Usage: 
+
+ One of the core aspects of the implementation involves utilizing the IndexedDB database for storing and retrieving data. Feather Pad Text Editor is an incredibly useful application that offers a seamless and efficient experience for users looking for a powerful text editor. By leveraging IndeedDB, a robust database system, the application ensures reliable data storage and retrieval, providing a solid foundation for managing text-based content. The integration of JavaScript, Node.js, and Express.js allows for dynamic and responsive functionality, enabling users to create, edit, and save text documents effortlessly. With the power of webpack, the application bundles and optimizes its resources, resulting in faster load times and improved performance.The utilization of service workers and the InjectManifest approach in combination with Workbox enhances the offline capabilities of Feather Pad. Users can continue working on their text documents even without an internet connection, ensuring uninterrupted productivity.
+
+Feather Pad's installable nature allows users to easily access the text editor as a standalone application, eliminating the need for a browser. This portability ensures convenience and availability across various devices and operating systems, empowering users to work on their text-based projects anytime, anywhere.
+
+
+## Credits
+
+* https://webpack.js.org/configuration/devtool/
+* https://webpack.js.org/configuration/mode/
+* https://webpack.js.org/configuration/mode/
+* https://themeisle.com/blog/best-note-taking-apps/#gref
+* https://webpack.js.org/guides/getting-started/
+* https://webpack.js.org/guides/asset-management/#loading-images
+* https://webpack.js.org/plugins/html-webpack-plugin/
+* https://webpack.js.org/plugins/mini-css-extract-plugin/#getting-started
+* https://expressjs.com/en/starter/installing.html
+* https://www.npmjs.com/package/concurrently
+* https://web.dev/learn/pwa/#interact_with_service_workers_in_the_browser
+* https://developer.chrome.com/docs/workbox/reference/
+* https://developer.chrome.com/docs/workbox/the-ways-of-workbox/#using-a-bundler
+* https://developer.chrome.com/docs/workbox/#injectmanifest_plugin
+* https://www.npmjs.com/package/idb
+* https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API
+* https://www.npmjs.com/package/webpack-pwa-manifest 
+
+
+
+### License:
+MIT License
+
+Copyright (c) [2023] [Afi Nkhume-Crecy]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 
 
