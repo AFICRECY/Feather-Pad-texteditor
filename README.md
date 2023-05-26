@@ -60,10 +60,10 @@ To install this project, a knowledge of HTML, CSS, JavaScript, Node.js, and Expr
 (Above: The code lives in the root package.json files and they connect all of the package.json files in the client and sever folders. This package.json defines a set of scripts for running and building a full-stack application. It includes commands for starting the development environment concurrently, building the application, installing dependencies for both the server and client sides, and starting the client-side application.)
 
 
+<p>&nbsp;</p>
 
 
-
-### htmlRoutes.js
+### Server Folder: htmlRoutes.js
 ```js
 const path = require('path');
 
@@ -74,9 +74,80 @@ module.exports = (app) =>
 ```
 (Above: This code exports a function that takes an "app" parameter and defines a route for the root URL ("/") using the GET method. When this route is accessed, it sends the index.html file located in the "../client/dist" directory as the response. The "path" module is used to construct the file path in a platform-independent way.)
 
+<p>&nbsp;</p>
+
+### Server Folder: package.json
+```json
+ "scripts": {
+   "dev": "webpack-dev-server",
+   "build": "webpack --mode production",
+   "start": "webpack --watch",
+   "heroku-prebuild": "npm install --dev"
+ },
+```
+(Above: This code defines a set of scripts that can be executed using npm. The "dev" script launches the webpack-dev-server for development purposes, while the "build" script triggers the production mode build with webpack. The "start" script enables webpack to watch for file changes, and the "heroku-prebuild" script installs development dependencies specifically for Heroku deployment.)
+
+<p>&nbsp;</p>
 
 
-### webpack.config.js
+### Server Folder: index.js
+```js
+
+if ('serviceWorker' in navigator) {
+ const workboxSW = new Workbox('/src-sw.js');
+ workboxSW.register();
+} else {
+ console.error('Service workers are not supported in this browser.');
+}
+```
+(Above: This code checks to see if service workers are supported and also registers the workbox servive worker.)
+
+<p>&nbsp;</p>
+
+
+### Client Folder: database.js
+```js
+import { openDB } from 'idb';
+
+
+const initdb = async () =>
+ openDB('jate', 1, {
+   upgrade(db) {
+     if (db.objectStoreNames.contains('jate')) {
+       console.log('jate database already exists');
+       return;
+     }
+     db.createObjectStore('jate', { keyPath: 'id', autoIncrement: true });
+     console.log('jate database created');
+   },
+ });
+
+export const putDb = async (content) => {
+ console.log('PUT to the database');
+ const jateDb = await openDB('jate', 1);
+ const tx = jateDb.transaction('jate', 'readwrite');
+ const store = tx.objectStore('jate');
+ const request = store.put({jate: content });
+ const result = await request;
+ console.log('Data saved to the database', result);
+};
+
+export const getDb = async () => {
+ console.log('PUT to the database');
+ const jateDb = await openDB('jate', 1);
+ const tx = jateDb.transaction('jate', 'readonly');
+ const store = tx.objectStore('jate');
+ const request = store.getAll();
+ const result = await request;
+ console.log('Data saved to the database', result);
+};
+initdb();
+```
+(Above: This code imports the "openDB" function from the 'idb' library and initializes a database called 'jate' with a version of 1. It checks if the 'jate' object store already exists and creates it if it doesn't. The "putDb" function puts data into the 'jate' object store, while the "getDb" function retrieves all data from the same object store. The code initializes the database by calling the "initdb" function. )
+
+<p>&nbsp;</p>
+
+### Client Folder: webpack.config.js
 ```js
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
@@ -149,8 +220,10 @@ module.exports = () => {
 ```
 (Above: This code configures a webpack build for a development environment. It sets the entry points for two JavaScript files, 'index.js' and 'install.js', and specifies the output path for the bundled files. It uses several plugins, including HtmlWebpackPlugin for generating an HTML file, InjectManifest for injecting a service worker, and WebpackPwaManifest for generating a web app manifest. The generated manifest includes details such as the app's name, description, theme color, and icons. Additionally, the code defines module rules for handling CSS files and JavaScript files using Babel for transpiling and applying plugins such as '@babel/preset-env' and '@babel/plugin-proposal-object-rest-spread'.)
 
+<p>&nbsp;</p>
 
-### src-sw.js
+
+### Client Folder: src-sw.js
 ```js
 const { offlineFallback, warmStrategyCache } = require('workbox-recipes');
 const { CacheFirst, StaleWhileRevalidate } = require('workbox-strategies');
@@ -194,20 +267,10 @@ registerRoute(
 ```
 (Above: This code sets up caching strategies and registers routes using the Workbox library for service workers. It utilizes strategies like CacheFirst and StaleWhileRevalidate for different types of requests. It also configures plugins such as CacheableResponsePlugin and ExpirationPlugin to control caching behavior and expiration time. The code includes precaching and routing of assets based on the provided manifest file.)
 
+<p>&nbsp;</p>
 
 
-### server package.json
-```json
- "scripts": {
-   "dev": "webpack-dev-server",
-   "build": "webpack --mode production",
-   "start": "webpack --watch",
-   "heroku-prebuild": "npm install --dev"
- },
-```
-
-
-### client install.js
+### Client Folder: install.js
 ```js
 const butInstall = document.getElementById("buttonInstall");
 
@@ -231,55 +294,10 @@ window.addEventListener('appinstalled', (event) => {
  window.deferredPrompt = null;
 });
 ```
+(Above: This code sets up an event listener for the "beforeinstallprompt" event, which is triggered when the browser prompts the user to install the web app. It stores the event object in the "deferredPrompt" variable and shows a hidden install button by removing the "hidden" class. When the install button is clicked, it prompts the user to install the app using the stored "deferredPrompt" event, then hides the install button. Finally, it listens for the "appinstalled" event to reset the "deferredPrompt" variable.)
+
+<p>&nbsp;</p>
 
 
-### server index.js
-```js
-// Check if service workers are supported
-if ('serviceWorker' in navigator) {
- // register workbox service worker
- const workboxSW = new Workbox('/src-sw.js');
- workboxSW.register();
-} else {
- console.error('Service workers are not supported in this browser.');
-}
-```
-
-### client database.js
-```js
-import { openDB } from 'idb';
 
 
-const initdb = async () =>
- openDB('jate', 1, {
-   upgrade(db) {
-     if (db.objectStoreNames.contains('jate')) {
-       console.log('jate database already exists');
-       return;
-     }
-     db.createObjectStore('jate', { keyPath: 'id', autoIncrement: true });
-     console.log('jate database created');
-   },
- });
-
-export const putDb = async (content) => {
- console.log('PUT to the database');
- const jateDb = await openDB('jate', 1);
- const tx = jateDb.transaction('jate', 'readwrite');
- const store = tx.objectStore('jate');
- const request = store.put({jate: content });
- const result = await request;
- console.log('Data saved to the database', result);
-};
-
-export const getDb = async () => {
- console.log('PUT to the database');
- const jateDb = await openDB('jate', 1);
- const tx = jateDb.transaction('jate', 'readonly');
- const store = tx.objectStore('jate');
- const request = store.getAll();
- const result = await request;
- console.log('Data saved to the database', result);
-};
-initdb();
-```
