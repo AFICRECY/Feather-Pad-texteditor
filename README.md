@@ -24,9 +24,14 @@ Deployed Application Link:  https://feather-pad-texteditor.herokuapp.com/
 Note-taking apps have become an essential tool in today's society as they offer convenience, organization, and accessibility for individuals across various domains. Whether it's capturing important ideas, creating to-do lists, or recording meeting minutes, these apps provide a digital space for efficient note-taking, eliminating the need for traditional pen and paper. Moreover, their synchronization capabilities enable seamless access to notes across multiple devices, ensuring information is readily available whenever and wherever it is needed. My task was to build a text editor that can both run in a browser as well as have the ability to be installable as an app. This application should also be accessible on a user’s device without internet connection. I created the Feather pad text editor application considering the criteria of a progressive web app (PWA). The key focus of this project is to ensure a seamless user experience with access to a note taker application that can be installed on a user's device and usable even offline. To create Feather Pad, I brought together many different kinds of software, plugins, and packages. The Feather Pad app can become an indispensable tool for students, researchers, and professionals, offering them the ability to store, organize, and collaborate on notes and research projects. Note taking applications that do not rely on the internet  play a crucial role in enhancing productivity and facilitating efficient information management in various domains. This digital notebook serves as a modern counterpart to traditional paper notebooks, enabling users to conveniently organize their notes and information and auto save on the go. 
 
 
-Screenshot of Functioning Web Application:
+### Screenshot of Functioning Web Application:
 
 ![App In Use](/client/src/images/Screenshot-of-app.png)
+
+
+### Gif (Animation of app installation)
+![Feather-pad](https://github.com/AFICRECY/NetBlend-SocialMedia-API/assets/101257805/dcdccdf1-f5b8-4686-870c-92daaf6fd88d)
+
 
 
 ## Table of Contents:
@@ -312,27 +317,30 @@ window.addEventListener('appinstalled', (event) => {
 
 Feather Pad's installable nature allows users to easily access the text editor as a standalone application, eliminating the need for a browser. This portability ensures convenience and availability across various devices and operating systems, empowering users to work on their text-based projects anytime, anywhere.
 
+<p>&nbsp;</p>
+
 
 ## Credits
 
-* https://webpack.js.org/configuration/devtool/
-* https://webpack.js.org/configuration/mode/
-* https://webpack.js.org/configuration/mode/
-* https://themeisle.com/blog/best-note-taking-apps/#gref
-* https://webpack.js.org/guides/getting-started/
-* https://webpack.js.org/guides/asset-management/#loading-images
-* https://webpack.js.org/plugins/html-webpack-plugin/
-* https://webpack.js.org/plugins/mini-css-extract-plugin/#getting-started
-* https://expressjs.com/en/starter/installing.html
-* https://www.npmjs.com/package/concurrently
-* https://web.dev/learn/pwa/#interact_with_service_workers_in_the_browser
-* https://developer.chrome.com/docs/workbox/reference/
-* https://developer.chrome.com/docs/workbox/the-ways-of-workbox/#using-a-bundler
-* https://developer.chrome.com/docs/workbox/#injectmanifest_plugin
-* https://www.npmjs.com/package/idb
-* https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API
-* https://www.npmjs.com/package/webpack-pwa-manifest 
+* Devtool (webpack): https://webpack.js.org/configuration/devtool/
+* Mode (webpack): https://webpack.js.org/configuration/mode/
+* Note Taking App Article: https://themeisle.com/blog/best-note-taking-apps/#gref
+* Webpack Install: https://webpack.js.org/guides/getting-started/
+* Asset Management (webpack): https://webpack.js.org/guides/asset-management/#loading-images
+* HTML Webpack Plugin: https://webpack.js.org/plugins/html-webpack-plugin/
+* Mini CSS Extract Plugin:https://webpack.js.org/plugins/mini-css-extract-plugin/#getting-started 
+* Express: https://expressjs.com/en/starter/installing.html
+* Concurrently: https://www.npmjs.com/package/concurrently
+* Learn PWA: https://web.dev/learn/pwa/#interact_with_service_workers_in_the_browser
+* API Reference Workbox: https://developer.chrome.com/docs/workbox/reference/
+* Using a Bundler Workbox: https://developer.chrome.com/docs/workbox/the-ways-of-workbox/#using-a-bundler
+* Inject Manifest Workbox: https://developer.chrome.com/docs/workbox/#injectmanifest_plugin
+* IndexedDB NPM: https://www.npmjs.com/package/idb
+* IndexedDB API: https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API
+* PWA Manifest Webpack: https://www.npmjs.com/package/webpack-pwa-manifest 
 
+
+<p>&nbsp;</p>
 
 
 ### License:
