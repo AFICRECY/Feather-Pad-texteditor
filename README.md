@@ -30,7 +30,7 @@ Screenshot of Functioning Web Application:
 
 
 ## Table of Contents:
-* Installation (HTML, CSS, JavaScript, Node.js, NPM Packages, Webpack, PWA Paradigm, Functions, IndexedDB, Express.js, Heroku, Manifest.json)
+* Installation (HTML, CSS, JavaScript, Node.js, NPM Packages, Webpack, PWA Paradigm, Functions, IndexedDB, Express.js, Heroku, Manifest.json, Service Workers)
 * Usage
 * Credits
 * License
@@ -57,6 +57,7 @@ To install this project, a knowledge of HTML, CSS, JavaScript, Node.js, and Expr
    "client": "cd client && npm start"
  },
 ```
+(Above: The code lives in the root package.json files and they connect all of the package.json files in the client and sever folders. This package.json defines a set of scripts for running and building a full-stack application. It includes commands for starting the development environment concurrently, building the application, installing dependencies for both the server and client sides, and starting the client-side application.)
 
 
 
@@ -71,6 +72,7 @@ module.exports = (app) =>
    res.sendFile(path.join(__dirname, '../client/dist/index.html'))
  );
 ```
+(Above: This code exports a function that takes an "app" parameter and defines a route for the root URL ("/") using the GET method. When this route is accessed, it sends the index.html file located in the "../client/dist" directory as the response. The "path" module is used to construct the file path in a platform-independent way.)
 
 
 
@@ -145,6 +147,7 @@ module.exports = () => {
  };
  };
 ```
+(Above: This code configures a webpack build for a development environment. It sets the entry points for two JavaScript files, 'index.js' and 'install.js', and specifies the output path for the bundled files. It uses several plugins, including HtmlWebpackPlugin for generating an HTML file, InjectManifest for injecting a service worker, and WebpackPwaManifest for generating a web app manifest. The generated manifest includes details such as the app's name, description, theme color, and icons. Additionally, the code defines module rules for handling CSS files and JavaScript files using Babel for transpiling and applying plugins such as '@babel/preset-env' and '@babel/plugin-proposal-object-rest-spread'.)
 
 
 ### src-sw.js
@@ -188,8 +191,10 @@ registerRoute(
    ],
  })
 );
-
 ```
+(Above: This code sets up caching strategies and registers routes using the Workbox library for service workers. It utilizes strategies like CacheFirst and StaleWhileRevalidate for different types of requests. It also configures plugins such as CacheableResponsePlugin and ExpirationPlugin to control caching behavior and expiration time. The code includes precaching and routing of assets based on the provided manifest file.)
+
+
 
 ### server package.json
 ```json
