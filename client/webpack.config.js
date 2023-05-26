@@ -40,7 +40,7 @@ module.exports = () => {
         publicPath: './',
         icons: [
           {
-            src: path.resolve('src/images/featherpad-img.png'),
+            src: path.resolve('src/images/feather-pad-icon.png'),
             sizes: [16, 96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons'),
           },
